@@ -96,9 +96,9 @@ class RoomServiceImpl{
 
 Reserve ..> Operator
 Reserve ..> Room
-OperatorService ..|> OperatorServiceImpl
-ReserveService ..|> ReserveServiceImpl
-RoomService ..|> RoomServiceImpl
+OperatorServiceImpl ..|> OperatorService
+ReserveServiceImpl ..|> ReserveService
+RoomServiceImpl ..|> RoomService
 OperatorServiceImpl "1" *-- "1" ReserveServiceImpl
 ReserveServiceImpl "1" *-- "1" OperatorServiceImpl
 ReserveServiceImpl "1" *-- "1" RoomServiceImpl

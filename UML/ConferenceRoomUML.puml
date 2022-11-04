@@ -1,0 +1,105 @@
+@startuml
+class Operator{
+- String : name
+- String : password
+' setter getter
+' name
++ void : setName(String name)
++ String : getName()
+' password
++ void : setPassword(String password)
++ String : getPassword()
+}
+
+class Reserve{
+- Integer : reserveId
+- Integer : roomId
+- String : operatorName
+- Date : beginTime
+- Date : endTime
+'setter getter
+' reserveId
++ Integer : getReserveId()
+' roomId
++ void : setRoomId(Integer roomId)
++ Integer : getRoomId()
+' operatorName
++ void : setOperatorName(String operatorName)
++ String : getOperatorName()
+' beginTime
++ void : setBeginTime(Date beginTime)
++ Date : getBeginTime()
+' endTime
++ void : setEndTime(Date endTime)
++ Date : getEndTime()
+}
+
+class Room{
+- Integer : roomId
+- Boolean : available
+'setter getter
+' roomId
++ void : setRoomId(Integer roomId)
++ Integer : getRoomId()
+' available
++ void : setAvailable(Boolean available)
++ Boolean : getAvailable()
+}
+
+'service interface
+interface OperatorService{
++ int : insertOperator(String name, String password)
++ int : deleteOperator(String name)
++ int : updateOperator(String name, String password)
++ ArrayList<Operator> : selectOperators(String keywords)
+}
+
+interface ReserveService{
++ int : insertReserve(String operatorName, Integer roomId, Date beginTime, Date endTime)
++ int : deleteReserve(Integer reserveId)
++ int : updateReserve(String operatorName, Integer roomId, Date beginTime, Date endTime)
++ ArrayList<Reserve> : selectReserves(String operatorName, Integer roomId, Date beginTime, Date endTime)
+}
+
+interface RoomService{
++ int : insertRoom(Integer roomId, Boolean available)
++ int : deleteRoom(Integer roomId)
++ int : updateRoom(Integer roomId, Boolean available)
++ ArrayList<Room> : selectRooms(String keywords, Boolean available)
+}
+
+'service implement
+class OperatorServiceImpl{
+- ReserveService : reserveService
++ int : insertOperator(String name, String password)
++ int : deleteOperator(String name)
++ int : updateOperator(String name, String password)
++ ArrayList<Operator> : selectOperators(String keywords)
+}
+
+class ReserveServiceImpl{
+- OperatorService operatorService
+- RoomService roomService
++ int : insertReserve(String operatorName, Integer roomId, Date beginTime, Date endTime)
++ int : deleteReserve(Integer reserveId)
++ int : updateReserve(String operatorName, Integer roomId, Date beginTime, Date endTime)
++ ArrayList<Reserve> : selectReserves(String operatorName, Integer roomId, Date beginTime, Date endTime)
+}
+
+class RoomServiceImpl{
+- ReserveService reserveService
++ int : insertRoom(Integer roomId, Boolean available)
++ int : deleteRoom(Integer roomId)
++ int : updateRoom(Integer roomId, Boolean available)
++ ArrayList<Room> : selectRooms(String keywords, Boolean available)
+}
+
+Reserve ..> Operator
+Reserve ..> Room
+OperatorService ..|> OperatorServiceImpl
+ReserveService ..|> ReserveServiceImpl
+RoomService ..|> RoomServiceImpl
+OperatorServiceImpl "1" *-- "1" ReserveServiceImpl
+ReserveServiceImpl "1" *-- "1" OperatorServiceImpl
+ReserveServiceImpl "1" *-- "1" RoomServiceImpl
+@enduml

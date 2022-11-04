@@ -102,4 +102,9 @@ RoomService ..|> RoomServiceImpl
 OperatorServiceImpl "1" *-- "1" ReserveServiceImpl
 ReserveServiceImpl "1" *-- "1" OperatorServiceImpl
 ReserveServiceImpl "1" *-- "1" RoomServiceImpl
+OperatorServiceImpl ..> Operator
+ReserveServiceImpl ..> Room
+ReserveServiceImpl ..> Operator
+ReserveServiceImpl ..> Reserve
+RoomServiceImpl ..> Room
 @enduml

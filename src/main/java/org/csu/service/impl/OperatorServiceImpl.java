@@ -17,33 +17,44 @@ public class OperatorServiceImpl implements OperatorService {
 
     @Override
     public Operator insertOperator(String name, String password) {
-        Operator operator = new Operator();
-        operator.setName(name);
+//        当前用户名不存在
+        if (operatorJPA.findByName(name) == null){
+            Operator operator = new Operator();
+            operator.setName(name);
 //        todo : 密码加密
-        operator.setPassword(password);
+            operator.setPassword(password);
 //        JPA.save方法可以执行添加也可以执行更新，如果存在主键就执行更新，不存在就添加数据
-        return operatorJPA.save(operator);
+            return operatorJPA.save(operator);
+        }
+        return null;
     }
 
     @Override
     public void deleteOperator(String name) {
-        Operator operator = operatorJPA.findById(name).get();
-        operatorJPA.delete(operator);
-        return;
+        Operator operator = operatorJPA.findByName(name);
+        if (operator != null){
+            operatorJPA.delete(operator);
+        }
     }
 
     @Override
     public Operator updateOperator(String name, String password) {
-        Operator operator = new Operator();
-        operator.setName(name);
+//        当前用户存在
+        Operator operator = operatorJPA.findByName(name);
+        if (operator != null){
+            Operator newOperator = new Operator();
+            newOperator.setName(name);
 //        todo : 密码加密
-        operator.setPassword(password);
+            newOperator.setPassword(password);
+            newOperator.setOperatorId(operator.getOperatorId());
 //        JPA.save方法可以执行添加也可以执行更新，如果存在主键就执行更新，不存在就添加数据
-        return operatorJPA.save(operator);
+            return operatorJPA.save(newOperator);
+        }
+        return null;
     }
 
     @Override
     public List<Operator> selectOperators(String keywords) {
-        return operatorJPA.findByNameLike("%"+keywords+"%");
+        return operatorJPA.findByNameLike("%" + keywords + "%");
     }
 }

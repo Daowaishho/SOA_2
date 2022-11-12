@@ -15,4 +15,5 @@ public interface OperatorJPA extends
 //  序列化接口
         Serializable{
     List<Operator> findByNameLike(String name);
+    Operator findByName(String name);
 }

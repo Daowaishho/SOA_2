@@ -3,11 +3,12 @@ package org.csu.VO;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @Entity(name = "Rserve")
-public class Reserve {
+public class Reserve implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "reserveId", nullable = false, length = 10)

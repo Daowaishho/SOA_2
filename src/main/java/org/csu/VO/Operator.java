@@ -3,10 +3,11 @@ package org.csu.VO;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Entity(name = "Operator")
-public class Operator {
+public class Operator implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "name", nullable = false, length = 10)

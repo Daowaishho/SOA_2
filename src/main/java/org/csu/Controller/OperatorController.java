@@ -14,7 +14,7 @@ public class OperatorController {
     @Autowired
     OperatorService operatorService;
 
-    @PostMapping("")
+    @PostMapping("/")
     Operator insertOperator(
             @RequestParam("name") String name,
             @RequestParam("password") String password){
@@ -29,7 +29,7 @@ public class OperatorController {
 
     @PutMapping("/{name}")
     Operator updateOperator(
-            @RequestParam("name") String name,
+            @PathVariable("name") String name,
             @RequestParam("password") String password){
         return operatorService.updateOperator(name, password);
     }

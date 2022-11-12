@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.io.Serializable;
+import java.util.List;
 
 public interface OperatorJPA extends
 //        SpringDataJPA提供的简单数据操作接口
@@ -13,4 +14,5 @@ public interface OperatorJPA extends
         JpaSpecificationExecutor<Operator>,
 //  序列化接口
         Serializable{
+    List<Operator> findByNameLike(String name);
 }

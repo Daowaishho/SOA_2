@@ -44,6 +44,6 @@ public class OperatorServiceImpl implements OperatorService {
 
     @Override
     public List<Operator> selectOperators(String keywords) {
-        return operatorJPA.findAllById(Collections.singleton(keywords));
+        return operatorJPA.findByNameLike("%"+keywords+"%");
     }
 }

@@ -16,4 +16,5 @@ public interface OperatorJPA extends
         Serializable{
     List<Operator> findByNameLike(String name);
     Operator findByName(String name);
+    Operator findByOperatorId(Integer operatorId);
 }

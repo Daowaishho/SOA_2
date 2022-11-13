@@ -10,7 +10,7 @@ import java.util.Date;
 @Entity(name = "Reserve")
 public class Reserve implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "reserveId", nullable = false, length = 10)
     private Integer reserveId;
     @Column(name = "roomId", nullable = false, length = 10)

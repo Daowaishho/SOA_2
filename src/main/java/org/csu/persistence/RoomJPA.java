@@ -16,4 +16,5 @@ public interface RoomJPA extends
         Serializable {
     Room findByName(String roomName);
     List<Room> findRoomsByNameLike(String roomName);
+    Room findByRoomId(Integer roomId);
 }

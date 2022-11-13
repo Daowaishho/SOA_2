@@ -13,7 +13,6 @@ public class Operator implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "operatorId", nullable = false, length = 10)
     private Integer operatorId;
-
     @Column(name = "name", nullable = false, length = 32)
     private String name;
     @Column(name = "password", nullable = false, length = 10)

@@ -12,6 +12,8 @@ public class Room implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "roomId", nullable = false, length = 10)
     private Integer roomId;
+    @Column(name = "name", nullable = false, length = 10)
+    private String name;
     @Column(name = "available", nullable = false)
     private Boolean available;
 }

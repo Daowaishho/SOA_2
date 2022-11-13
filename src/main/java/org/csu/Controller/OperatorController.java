@@ -40,7 +40,4 @@ public class OperatorController {
     ){
         return operatorService.selectOperators(name);
     }
-
-
-
 }

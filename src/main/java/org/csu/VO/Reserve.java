@@ -15,8 +15,8 @@ public class Reserve implements Serializable {
     private Integer reserveId;
     @Column(name = "roomId", nullable = false, length = 10)
     private Integer roomId;
-    @Column(name = "operatorName", nullable = false, length = 10)
-    private String operatorName;
+    @Column(name = "operatorId", nullable = false, length = 10)
+    private Integer operatorId;
     @Column(name = "beginTime", nullable = false)
     private Date beginTime;
     @Column(name = "endTime", nullable = false)

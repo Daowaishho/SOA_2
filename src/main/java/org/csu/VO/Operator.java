@@ -17,4 +17,6 @@ public class Operator implements Serializable {
     private String name;
     @Column(name = "password", nullable = false, length = 10)
     private String password;
+    @Column(name = "delFlag", nullable = false, length = 10)
+    private Boolean delFlag = Boolean.TRUE;
 }

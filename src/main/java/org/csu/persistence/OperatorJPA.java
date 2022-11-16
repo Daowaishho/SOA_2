@@ -14,7 +14,7 @@ public interface OperatorJPA extends
         JpaSpecificationExecutor<Operator>,
 //  序列化接口
         Serializable{
-    List<Operator> findByNameLike(String name);
-    Operator findByName(String name);
-    Operator findByOperatorId(Integer operatorId);
+    List<Operator> findByNameLikeAndDelFlagEquals(String name, Boolean delFlag);
+    Operator findByNameAndDelFlagEquals(String name, Boolean delFlag);
+    Operator findByOperatorIdAndDelFlagEquals(Integer operatorId, Boolean delFlag);
 }

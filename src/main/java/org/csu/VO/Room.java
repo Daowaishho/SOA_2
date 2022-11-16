@@ -16,4 +16,6 @@ public class Room implements Serializable {
     private String name;
     @Column(name = "available", nullable = false)
     private Boolean available;
+    @Column(name = "delFlag", nullable = false, length = 10)
+    private Boolean delFlag = Boolean.TRUE;
 }

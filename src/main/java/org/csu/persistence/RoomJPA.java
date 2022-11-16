@@ -14,7 +14,7 @@ public interface RoomJPA extends
         JpaSpecificationExecutor<Room>,
 //  序列化接口
         Serializable {
-    Room findByName(String roomName);
-    List<Room> findRoomsByNameLike(String roomName);
-    Room findByRoomId(Integer roomId);
+    Room findByNameAndDelFlagEquals(String roomName, Boolean delFlag);
+    List<Room> findRoomsByNameLikeAndDelFlagEquals(String roomName, Boolean delFlag);
+    Room findByRoomIdAndDelFlagEquals(Integer roomId, Boolean delFlag);
 }

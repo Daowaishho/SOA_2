@@ -1,6 +1,7 @@
 package org.csu.Controller;
 
 import org.csu.VO.Reserve;
+import org.csu.common.CommonResponse;
 import org.csu.service.ReserveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,7 +17,7 @@ public class ReserveController {
     ReserveService reserveService;
 
     @PostMapping("/")
-    Reserve insertReserve(
+    public CommonResponse<Reserve> insertReserve(
             @RequestParam("operatorName") String operatorName,
             @RequestParam("roomName") String roomName,
             @RequestParam("beginTime") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date beginTime,
@@ -26,13 +27,13 @@ public class ReserveController {
     }
 
     @DeleteMapping("/{reserveId}")
-    void deleteReserve(
+    public CommonResponse<Reserve> deleteReserve(
             @PathVariable("reserveId") Integer reserveId){
-        reserveService.deleteReserve(reserveId);
-    };
+        return reserveService.deleteReserve(reserveId);
+    }
 
     @PutMapping("/{reserveId}")
-    Reserve updateReserve(
+    public CommonResponse<Reserve> updateReserve(
             @PathVariable("reserveId") Integer reserveId,
             @RequestParam("operatorName") String operatorName,
             @RequestParam("roomName") String roomName,
@@ -43,7 +44,7 @@ public class ReserveController {
     }
 
     @GetMapping("/")
-    public List<Reserve> selectReserves(
+    public CommonResponse<List<Reserve>> selectReserves(
             @RequestParam("operatorName") String operatorName,
             @RequestParam("roomName") String roomName,
             @RequestParam("beginTime") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date beginTime,

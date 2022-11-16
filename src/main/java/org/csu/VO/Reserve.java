@@ -21,4 +21,6 @@ public class Reserve implements Serializable {
     private Date beginTime;
     @Column(name = "endTime", nullable = false)
     private Date endTime;
+    @Column(name = "delFlag", nullable = false, length = 10)
+    private Boolean delFlag = Boolean.TRUE;
 }

@@ -37,9 +37,9 @@ public class ReserveServiceImpl implements ReserveService {
 //        todo : 开始时间必须在当前时间之后
 //        用户和房间都存在且该房间beginTime到endTime之间的时间段是否没有冲突
         if (!checkOperatorExist(operatorName)){
-            return CommonResponse.createForError("用户\""+operatorName+"\"不存在");
+            return CommonResponse.createForError("用户（"+operatorName+"）不存在");
         } else if (!checkRoomExist(roomName)) {
-            return CommonResponse.createForError("房间\""+roomName+"\"不存在");
+            return CommonResponse.createForError("房间（"+roomName+"）不存在");
         } else if (!checkConflictsExist(roomName, beginTime, endTime)) {
             return CommonResponse.createForError("您选择的时间段有冲突");
         } else if (!beginTime.before(endTime)) {
@@ -65,9 +65,9 @@ public class ReserveServiceImpl implements ReserveService {
         Reserve reserve = reserveJPA.findByReserveIdAndDelFlagEquals(reserveId, Boolean.TRUE);
         if (reserve != null){
             reserve.setDelFlag(Boolean.FALSE);
-            CommonResponse.createForSuccess(reserveJPA.save(reserve));
+            return CommonResponse.createForSuccess(reserveJPA.save(reserve));
         }
-        return CommonResponse.createForError("当前要删除的id为\""+reserveId+"\"记录不存在");
+        return CommonResponse.createForError("当前要删除的id为（"+reserveId+"）记录不存在");
     }
 
     /**
@@ -87,19 +87,23 @@ public class ReserveServiceImpl implements ReserveService {
 //        因为要先除开要修改的记录,先把该记录删了
           reserveJPA.delete(oldReserve);
 //        用户和房间都存在且该房间beginTime到endTime之间的时间段是否没有冲突
-        if (checkOperatorExist(operatorName) &&
-            checkRoomExist(roomName) &&
-            checkConflictsExist(roomName, beginTime, endTime) &&
-            beginTime.before(endTime)){
-//          更新预约信息
-                oldReserve.setOperatorId(getOperatorIdbyOperatorName(operatorName));
-                oldReserve.setRoomId(getRoomIdbyRoomName(roomName));
-                oldReserve.setBeginTime(beginTime);
-                oldReserve.setEndTime(endTime);
+            if (!checkOperatorExist(operatorName)) {
+                return CommonResponse.createForError("更新id为（"+reserveId+"）的记录失败,当前用户（"+operatorName+"）不存在");
+            } else if (!checkRoomExist(roomName)) {
+                return CommonResponse.createForError("更新id为（"+reserveId+"）的记录失败,当前房间（"+roomName+"）不存在");
+            } else if (!checkConflictsExist(roomName, beginTime, endTime)) {
+                return CommonResponse.createForError("更新id为（"+reserveId+"）的记录失败,当前时间有冲突");
+            } else if (!beginTime.before(endTime)) {
+                return CommonResponse.createForError("更新id为（"+reserveId+"）的记录失败,开始时间必须在结束时间之后");
             }
+            //          更新预约信息
+            oldReserve.setOperatorId(getOperatorIdbyOperatorName(operatorName));
+            oldReserve.setRoomId(getRoomIdbyRoomName(roomName));
+            oldReserve.setBeginTime(beginTime);
+            oldReserve.setEndTime(endTime);
             return CommonResponse.createForSuccess(reserveJPA.save(oldReserve));
         }
-        return CommonResponse.createForError("更新id为\""+reserveId+"\"的记录失败");
+        return CommonResponse.createForError("更新id为（"+reserveId+"）的记录失败,当前id为（"+reserveId+"）的记录不存在");
     }
 
     /**

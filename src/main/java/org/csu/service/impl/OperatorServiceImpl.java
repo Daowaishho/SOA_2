@@ -36,7 +36,7 @@ public class OperatorServiceImpl implements OperatorService {
 //        JPA.save方法可以执行添加也可以执行更新，如果存在主键就执行更新，不存在就添加数据
             return CommonResponse.createForSuccess(operatorJPA.save(operator));
         }
-        return CommonResponse.createForError("该用户名\""+name+"\"已存在");
+        return CommonResponse.createForError("该用户名（"+name+"）已存在");
     }
 
     /**
@@ -58,7 +58,7 @@ public class OperatorServiceImpl implements OperatorService {
             }
             CommonResponse.createForSuccess(operatorJPA.save(operator));
         }
-        return CommonResponse.createForError("当前要删除的用户\""+name+"\"不存在");
+        return CommonResponse.createForError("当前要删除的用户（"+name+"）不存在");
     }
 
     /**
@@ -79,7 +79,7 @@ public class OperatorServiceImpl implements OperatorService {
 //        JPA.save方法可以执行添加也可以执行更新，如果存在主键就执行更新，不存在就添加数据
             return CommonResponse.createForSuccess(operatorJPA.save(operator));
         }
-        return CommonResponse.createForError("当前要更新的用户\""+name+"\"不存在");
+        return CommonResponse.createForError("当前要更新的用户（"+name+"）不存在");
     }
 
     /**

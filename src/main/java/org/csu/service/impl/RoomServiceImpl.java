@@ -33,7 +33,7 @@ public class RoomServiceImpl implements RoomService {
             room.setAvailable(available);
             return CommonResponse.createForSuccess(roomJPA.save(room));
         }
-        return CommonResponse.createForError("该房间\""+roomName+"\"已存在");
+        return CommonResponse.createForError("该房间（"+roomName+"）已存在");
     }
 
     /**
@@ -51,7 +51,7 @@ public class RoomServiceImpl implements RoomService {
             setRelevantReservesFlagFalse(room);
             return CommonResponse.createForSuccess(room);
         }
-        return CommonResponse.createForError("当前要删除的房间\""+roomName+"\"不存在");
+        return CommonResponse.createForError("当前要删除的房间（"+roomName+"）不存在");
     }
 
     /**
@@ -73,7 +73,7 @@ public class RoomServiceImpl implements RoomService {
             }
             return CommonResponse.createForSuccess(room);
         }
-        return null;
+        return CommonResponse.createForError("当前要更新的房间（"+roomName+"）不存在");
     }
 
     /**

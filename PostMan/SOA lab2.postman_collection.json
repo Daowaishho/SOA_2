@@ -19,12 +19,14 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "xaa",
+									"value": "黄舒杰",
+									"description": "操作人员的名字",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "xaa",
+									"value": "123",
+									"description": "操作人员的密码",
 									"type": "text"
 								}
 							]
@@ -70,7 +72,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/Operators/hsj?password=2",
+							"raw": "http://localhost:8080/Operators/黄舒杰?password=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -78,12 +80,13 @@
 							"port": "8080",
 							"path": [
 								"Operators",
-								"hsj"
+								"黄舒杰"
 							],
 							"query": [
 								{
 									"key": "password",
-									"value": "2"
+									"value": "1",
+									"description": "操作人员新的密码"
 								}
 							]
 						}
@@ -96,7 +99,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/Operators/x",
+							"raw": "http://localhost:8080/Operators/黄",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -104,7 +107,7 @@
 							"port": "8080",
 							"path": [
 								"Operators",
-								"x"
+								"黄"
 							]
 						}
 					},
@@ -125,12 +128,14 @@
 							"formdata": [
 								{
 									"key": "roomName",
-									"value": "B102",
+									"value": "B404",
+									"description": "会议室的名字",
 									"type": "text"
 								},
 								{
 									"key": "available",
 									"value": "true",
+									"description": "会议室当前是否可用",
 									"type": "text"
 								}
 							]
@@ -156,7 +161,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/Rooms/B101",
+							"raw": "http://localhost:8080/Rooms/B102",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -164,7 +169,7 @@
 							"port": "8080",
 							"path": [
 								"Rooms",
-								"B101"
+								"B102"
 							]
 						}
 					},
@@ -189,7 +194,8 @@
 							"query": [
 								{
 									"key": "available",
-									"value": "false"
+									"value": "false",
+									"description": "要修改的会议室可用状态"
 								}
 							]
 						}
@@ -231,22 +237,26 @@
 							"formdata": [
 								{
 									"key": "operatorName",
-									"value": "x",
+									"value": "黄舒杰",
+									"description": "操作者的名字",
 									"type": "text"
 								},
 								{
 									"key": "roomName",
-									"value": "B102",
+									"value": "B404",
+									"description": "会议室的名字",
 									"type": "text"
 								},
 								{
 									"key": "beginTime",
-									"value": "2002-01-1 01:12:11",
+									"value": "5002-01-1 01:12:11",
+									"description": "预约的开始时间",
 									"type": "text"
 								},
 								{
 									"key": "endTime",
-									"value": "2020-01-1 01:11:11",
+									"value": "6020-01-11 01:11:1",
+									"description": "预约的结束时间",
 									"type": "text"
 								}
 							]
@@ -272,7 +282,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/Reserves/1",
+							"raw": "http://localhost:8080/Reserves/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -280,7 +290,7 @@
 							"port": "8080",
 							"path": [
 								"Reserves",
-								"1"
+								"5"
 							]
 						}
 					},
@@ -305,19 +315,23 @@
 							"query": [
 								{
 									"key": "operatorName",
-									"value": "x"
+									"value": "x",
+									"description": "操作者的名字"
 								},
 								{
 									"key": "roomName",
-									"value": "B102"
+									"value": "B102",
+									"description": "会议室的名字"
 								},
 								{
 									"key": "beginTime",
-									"value": "2000-01-1 01:12:11"
+									"value": "2000-01-1 01:12:11",
+									"description": "预约的开始时间"
 								},
 								{
 									"key": "endTime",
-									"value": "2003-01-1 01:12:10"
+									"value": "2003-01-1 01:12:10",
+									"description": "预约的结束时间"
 								}
 							]
 						}
@@ -337,22 +351,26 @@
 							"formdata": [
 								{
 									"key": "operatorName",
-									"value": "x",
+									"value": "黄",
+									"description": "操作的名字的关键字",
 									"type": "text"
 								},
 								{
 									"key": "roomName",
 									"value": "B",
+									"description": "会议室名字的关键字",
 									"type": "text"
 								},
 								{
 									"key": "beginTime",
 									"value": "1020-01-1 01:11:11",
+									"description": "开始时间范围",
 									"type": "text"
 								},
 								{
 									"key": "endTime",
-									"value": "3020-01-1 01:11:11",
+									"value": "9999-01-1 01:11:11",
+									"description": "结束时间范围",
 									"type": "text"
 								}
 							]
